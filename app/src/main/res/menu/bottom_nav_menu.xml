@@ -17,3 +17,9 @@
         android:title="@string/title_notifications" />
 
 </menu>
+
+    <!-- android:title="@string/title_dashboard"
+    android:title="@string/title_dashboard" />
+     android:title="@string/title_notifications" />
+
+     -->
