@@ -1,0 +1,6 @@
+<resources>
+    <string name="app_name">Plantora</string>
+    <string name="title_home">Accueil</string>
+    <string name="title_dashboard">Mes plantes</string>
+    <string name="title_notifications">Mon profil</string>
+</resources>
