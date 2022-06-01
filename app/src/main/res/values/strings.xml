@@ -3,4 +3,5 @@
     <string name="title_home">Accueil</string>
     <string name="title_dashboard">Mes plantes</string>
     <string name="title_notifications">Mon profil</string>
+    <string name="search_plant">Ficus, cactus, ville...</string>
 </resources>
