@@ -33,14 +33,14 @@
         android:id="@+id/imageView"
         android:layout_width="431dp"
         android:layout_height="446dp"
+        android:layout_marginStart="10dp"
         android:layout_marginTop="-400dp"
         android:src="@drawable/feuille_removebg_preview"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.187"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.565" />
+        app:layout_constraintVertical_bias="0.551" />
 
     <EditText
         android:id="@+id/username"
