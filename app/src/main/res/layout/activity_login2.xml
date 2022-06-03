@@ -35,7 +35,6 @@
         android:layout_height="446dp"
         android:layout_marginTop="-110dp"
         android:src="@drawable/feuille_removebg_preview"
-        app:layout_constraintBottom_toTopOf="@+id/login"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.187"
         app:layout_constraintStart_toStartOf="parent"
