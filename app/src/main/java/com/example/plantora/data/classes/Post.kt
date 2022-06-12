@@ -15,9 +15,9 @@ import java.util.*
         onDelete = ForeignKey.CASCADE)])
 data class Post(
     @PrimaryKey val pid: Int,
-    @ColumnInfo(name = "title") val plantName: String?,
+    @ColumnInfo(name = "title") val title: String?,
     @ColumnInfo(name = "city") val city: String?,
-    @ColumnInfo(name = "mail") val mail: String?,
+    @ColumnInfo(name = "mailcontact") val mailcontact: String?,
     @ColumnInfo(name = "description") val description: String?,
     @ColumnInfo(name = "picture") val picture: Bitmap?,
     @ColumnInfo(name = "date") val date: Date?,

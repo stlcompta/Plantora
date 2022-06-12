@@ -18,8 +18,8 @@ interface PostDao {
     @Query("SELECT * FROM post")
     fun getAll(): List<Post>
 
-    @Query("SELECT * FROM post ORDER BY date DESC ")
-    fun getAllByDate(): List<Post>
+    @Query("SELECT * FROM post ORDER BY date DESC LIMIT 20 ")
+    fun getNewPosts(): List<Post>
 
     @Query("SELECT * FROM post WHERE author = :auteur")
     fun getMyPosts(auteur:Long): List<Post>

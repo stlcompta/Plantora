@@ -9,7 +9,7 @@ data class User(
     @PrimaryKey val uid: Int,
     // @ColumnInfo(name = "first_name") val firstName: String?,
     // @ColumnInfo(name = "last_name") val lastName: String?,
-    @ColumnInfo(name = "pseudo") val pseudo: String?,
+   // @ColumnInfo(name = "pseudo") val pseudo: String?,
     @ColumnInfo(name = "mail") val mail: String?,
     @ColumnInfo(name = "ucity") val ucity: String?
 )
