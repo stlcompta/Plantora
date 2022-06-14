@@ -2,11 +2,13 @@ package com.example.plantora.ui.dashboard
 
 import android.os.Bundle
 import android.view.LayoutInflater
+import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import com.example.plantora.R
 import com.example.plantora.databinding.FragmentDashboardBinding
 
 class DashboardFragment : Fragment() {
@@ -35,6 +37,15 @@ class DashboardFragment : Fragment() {
 //            textView.text = it
 //        }
        return root
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when(item.itemId){
+            R.id.itemAdd -> {
+
+            }
+        }
+        return super.onOptionsItemSelected(item)
     }
 
     override fun onDestroyView() {

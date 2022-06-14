@@ -9,7 +9,7 @@
     tools:context=".AddPostActivity">
 
     <EditText
-        android:id="@+id/editTextTextPersonName3"
+        android:id="@+id/editEmailPost"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
@@ -21,10 +21,10 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.504"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName2" />
+        app:layout_constraintTop_toBottomOf="@+id/editCityPost" />
 
     <ImageView
-        android:id="@+id/imageView7"
+        android:id="@+id/imagePost"
         android:layout_width="210dp"
         android:layout_height="127dp"
         android:layout_marginStart="100dp"
@@ -36,7 +36,7 @@
         app:tint="@color/purple_500" />
 
     <EditText
-        android:id="@+id/editTextTextPersonName"
+        android:id="@+id/editTitlePost"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="59dp"
@@ -49,7 +49,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.504"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView7" />
+        app:layout_constraintTop_toBottomOf="@+id/imagePost" />
 
     <TextView
         android:id="@+id/textView2"
@@ -61,13 +61,13 @@
         android:text="Photo"
         android:textColor="#020202"
         android:textSize="18sp"
-        app:layout_constraintEnd_toStartOf="@+id/imageView7"
+        app:layout_constraintEnd_toStartOf="@+id/imagePost"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
-        android:id="@+id/editTextTextPersonName2"
+        android:id="@+id/editCityPost"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
@@ -80,10 +80,10 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.504"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName" />
+        app:layout_constraintTop_toBottomOf="@+id/editTitlePost" />
 
     <EditText
-        android:id="@+id/editTextTextPersonName4"
+        android:id="@+id/editDescriptionPost"
         android:layout_width="wrap_content"
         android:layout_height="180dp"
         android:layout_marginBottom="100dp"
@@ -100,11 +100,11 @@
         app:layout_constraintStart_toStartOf="parent" />
 
     <Button
-        android:id="@+id/button2"
+        android:id="@+id/btnValidate"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="44dp"
-        android:text="Button"
+        android:text="Valider"
         android:textColor="#000000"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -123,5 +123,5 @@
         android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName3" />
+        app:layout_constraintTop_toBottomOf="@+id/editEmailPost" />
 </androidx.constraintlayout.widget.ConstraintLayout>

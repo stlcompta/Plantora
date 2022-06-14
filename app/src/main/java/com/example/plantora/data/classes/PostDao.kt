@@ -24,11 +24,11 @@ interface PostDao {
     @Query("SELECT * FROM post WHERE author = :auteur")
     fun getMyPosts(auteur:Long): List<Post>
 
-    @Query("SELECT * FROM post WHERE city LIKE :search OR title LIKE :search OR city LIKE :search OR mail LIKE :search " +
+    @Query("SELECT * FROM post WHERE city LIKE :search OR title LIKE :search OR city LIKE :search OR mailcontact LIKE :search " +
             "OR description LIKE :search")
     fun getPostsResearch(search:String): List<Post>
 
-    @Query("UPDATE post SET title = :titre, city = :ville, mail = :email, description = :desc, picture = :photo\n" +
+    @Query("UPDATE post SET title = :titre, city = :ville, mailcontact = :email, description = :desc, picture = :photo\n" +
             "WHERE pid = :id")
     fun editPost(titre:String, ville:String,email:String,desc:String,photo:Bitmap, id:Long): List<Post>
 
