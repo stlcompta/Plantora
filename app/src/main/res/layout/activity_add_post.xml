@@ -32,8 +32,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/textView2"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@android:drawable/ic_menu_add"
-        app:tint="@color/purple_500" />
+        app:srcCompat="@drawable/placeholder" />
 
     <EditText
         android:id="@+id/editTitlePost"

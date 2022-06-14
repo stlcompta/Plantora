@@ -1,6 +1,8 @@
 package com.example.plantora
 
 import android.content.Intent
+import android.graphics.BitmapFactory
+import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
@@ -31,12 +33,24 @@ class AddPostActivity : AppCompatActivity() {
         imagePost.setOnClickListener{
 
             val intentImg = Intent(Intent.ACTION_GET_CONTENT)
-            intentImg.type = "images/*"
-            startActivity(intentImg)
+            intentImg.type = "image/*"
+            startActivityForResult(intentImg, 100)
         }
 
         btnValidate.setOnClickListener{
 
         }
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        if(requestCode == 100 && resultCode == RESULT_OK){
+          val uri: Uri? = data?.data
+            val inputStream = contentResolver.openInputStream(uri!!)
+            val bitmap = BitmapFactory.decodeStream(inputStream)
+            imagePost.setImageBitmap(bitmap)
+        }
+
+
     }
 }

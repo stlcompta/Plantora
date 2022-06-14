@@ -9,8 +9,8 @@
     android:background="#FFF6F6"
     android:backgroundTint="#FFF6F6"
     android:backgroundTintMode="add"
-    android:foregroundTint="#FFF6F6"
-    android:paddingTop="?attr/actionBarSize">
+    android:foregroundTint="#FFF6F6">
+    //android:paddingTop="?attr/actionBarSize">
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/nav_view"
