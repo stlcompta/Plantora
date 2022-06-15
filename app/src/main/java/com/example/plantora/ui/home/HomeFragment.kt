@@ -6,12 +6,14 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ArrayAdapter
 import android.widget.ListView
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.example.plantora.AddPostActivity
 import com.example.plantora.R
+import com.example.plantora.data.classes.Post
 import com.example.plantora.databinding.FragmentHomeBinding
 
 class HomeFragment : Fragment() {
@@ -23,12 +25,13 @@ class HomeFragment : Fragment() {
     private val binding get() = _binding!!
 
     lateinit var adapter: PostAdaptor
+    var postsArray = ArrayList<Post>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        //val email = intent.getStringExtra("email")
-        // val listPosts = findViewById<ListView>(R.id.)
+//        //val email = intent.getStringExtra("email")
+//        val listPosts = findViewById<ListView>(R.id.listPosts)
 //        val adapter = PostAdaptor(this, R.layout.recycler_item_accueil,postsArray)
 //        listPosts.adapter = adapter
 //        _binding!!.
@@ -58,6 +61,19 @@ class HomeFragment : Fragment() {
             val intent = Intent (getActivity(), AddPostActivity::class.java)
             getActivity()?.startActivity(intent)
         }
+
+        //var listPosts = _binding!!.listPosts
+        //val adapter = PostAdaptor(this, R.layout.recycler_item_accueil,postsArray)
+        //listPosts.adapter = adapter
+//        _binding!!.
+//        listPosts = findView
+//        listPosts = PostAdaptor(this, R.layout.recycler_item_accueil, postsArray)
+//        listPosts.adapter = adapter
+
+//        _binding!!.listPosts
+//        val postsArray = listOf("Post 1", "Post 2", "Post 3", "Post 4")
+//        val adapter = ArrayAdapter(this, android.R.layout.recycler_item_accueil, postsArray)
+//        listPosts.adapder = adapter
 
         return root
     }
