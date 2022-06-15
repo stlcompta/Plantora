@@ -18,7 +18,7 @@
 
         <!-- Media -->
             <ImageView
-                android:id="@+id/imageplante"
+                android:id="@+id/imagepostplant"
                 android:layout_width="match_parent"
                 android:layout_height="194dp"
                 android:contentDescription="content_description_media"
@@ -33,14 +33,14 @@
 
                 <!-- Title, secondary and supporting text -->
                 <TextView
-                    android:id="@+id/textplantname"
+                    android:id="@+id/tvTitre"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Text1"
                     android:textAppearance="?attr/textAppearanceHeadline6"
                     />
                 <TextView
-                    android:id="@+id/textcity"
+                    android:id="@+id/tvCity"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"

@@ -1,36 +1,203 @@
 package com.example.plantora.data.classes
 
+import android.content.ContentValues
 import android.content.Context
-import androidx.room.Database
-import androidx.room.Room
-import androidx.room.RoomDatabase
+import android.database.sqlite.SQLiteDatabase
+import android.database.sqlite.SQLiteOpenHelper
+import android.graphics.Bitmap
+import androidx.room.*
+import java.util.*
 
-@Database(entities = [User::class, Post::class], version = 1)
-abstract class AppDatabase : RoomDatabase() {
+class AppDatabase(mContext: Context):SQLiteOpenHelper(
+    mContext,
+    DB_NAME,
+    null,
+    DB_VERSION
+) {
+    override fun onCreate(db: SQLiteDatabase?) {
 
-    abstract fun userDao(): UserDao;
-    abstract fun postDao(): PostDao;
+        val createTableUser = """
+            CREATE TABLE $USERS_TABLE_NAME (
+            $USER_ID integer PRIMARY KEY,
+            $MAIL varchar(50),
+            $USER_CITY varchar(50)
+            )
+            """.trimIndent()
 
-    companion object{
 
-        @Volatile
-        private var INSTANCE: AppDatabase? = null
+        val createTablePosts = """
+            CREATE TABLE $POSTS_TABLE_NAME (
+            $POSTS_ID integer PRIMARY KEY,
+            $TITLE varchar(50),
+            $DESCRIPTION text,
+            $CITY varchar(50),
+            $EMAIL varchar(50),
+            $AUTHOR Long,
+            $DATE date,
+            $IMAGE blob
 
-        fun getDatabase(context: Context): AppDatabase{
-            val tempInstance = INSTANCE
-            if(tempInstance != null){
-                return tempInstance
-            }
+            )
+            """.trimIndent()
 
-            synchronized(this){
-                val instance = Room.databaseBuilder(
-                    context.applicationContext,
-                    AppDatabase::class.java,
-                    "app_database"
-                ).build()
-                INSTANCE = instance
-                return instance
-            }
-        }
+        db?.execSQL(createTableUser)
+        db?.execSQL(createTablePosts)
+    }
+
+    override fun onUpgrade(db: SQLiteDatabase?, oldVersion: Int, newVersion: Int) {
+        db?.execSQL("DROP TABLE IF EXISTS $POSTS_TABLE_NAME")
+        db?.execSQL("DROP TABLE IF EXISTS $USERS_TABLE_NAME")
+        onCreate(db)
+    }
+
+    fun addUser(user : User): Boolean{
+
+        return false
+    }
+
+    fun addPost(post: Post) : Boolean{
+        val db = writableDatabase
+        val values = ContentValues();
+        values.put(TITLE, post.title)
+        values.put(DESCRIPTION, post.description)
+        values.put(CITY, post.city)
+        values.put(EMAIL, post.mailcontact)
+        values.put(IMAGE, post.image)
+
+        val result = db.insert(POSTS_TABLE_NAME, null, values).toInt()
+        db.close()
+        return result != -1
+
+    }
+
+    companion object {
+
+        private val DB_NAME = "plantora_db"
+        private val DB_VERSION = 2
+        //private var INSTANCE: AppDatabase? = null
+
+        private val POSTS_TABLE_NAME = "post"
+        private val POSTS_ID = "id"
+        private val TITLE = "name"
+        private val DESCRIPTION = "description"
+        private val EMAIL = "email"
+        private val IMAGE = "image"
+        private val CITY = "city"
+        private val DATE = "date"
+        private val AUTHOR = "author"
+
+        private val USERS_TABLE_NAME = "user"
+        private val USER_CITY = "city"
+        private val USER_ID = "uid"
+        private val MAIL = "mail"
     }
 }
+
+//class AppDatabase:(
+//    mContext : Context,
+//    name: String = "plantora_db",
+//    version: Int = 1
+//) : SQLiteOpenHelper(
+//    mContext,
+//    name,
+//    null,
+//    version
+//
+////)
+//    companion object{
+//
+//        @Volatile
+//        private var INSTANCE: AppDatabase? = null
+//
+//        private val POSTS_TABLE_NAME = "posts"
+//        private val POSTS_ID = "id"
+//        private val TITLE = "name"
+//        private val DESCRIPTION = "description"
+//        private val EMAIL = "email"
+//        private val IMAGE = "image"
+//        private val CITY = "city"
+//        private val DATE = "date"
+//        private val AUTHOR = "author"
+//
+//
+//        fun getDatabase(context: Context): AppDatabase{
+//            val tempInstance = INSTANCE
+//            if(tempInstance != null){
+//                return tempInstance
+//            }
+//
+//            synchronized(this){
+//                val instance = Room.databaseBuilder(
+//                    context.applicationContext,
+//                    AppDatabase::class.java,
+//                    "app_database"
+//                ).build()
+//                INSTANCE = instance
+//                return instance
+//            }
+//        }
+//
+//        fun onCreate(db: SQLiteDatabase?){
+////            val createTableUser = """
+////                CREATE TABLE user (
+////                $USER_ID
+////            """.trimIndent()
+//        }
+//        val createTablePosts = """
+//            CREATE TABLE $POSTS_TABLE_NAME (
+//            $POSTS_ID integer PRIMARY KEY,
+//            $TITLE varchar(50),
+//            $DESCRIPTION text,
+//            $CITY varchar(50),
+//            $EMAIL varchar(50),
+//            $AUTHOR Long,
+//            $DATE date,
+//            $IMAGE blob
+//
+//            )
+//            """.trimIndent()
+//        db?.execSQL(createTablePosts)
+//
+//    }
+//}
+
+//@Database(entities = [User::class, Post::class], version = 1)
+//abstract class AppDatabase : RoomDatabase() {
+//
+//    abstract fun userDao(): UserDao;
+//    abstract fun postDao(): PostDao;
+//
+//    companion object{
+//
+//        @Volatile
+//        private var INSTANCE: AppDatabase? = null
+//
+//        private val POSTS_TABLE_NAME = "posts"
+//        private val POSTS_ID = "id"
+//        private val TITLE = "name"
+//        private val DESCRIPTION = "description"
+//        private val EMAIL = "email"
+//        private val IMAGE = "image"
+//        private val CITY = "city"
+//        private val DATE = "date"
+//        private val AUTHOR = "author"
+//
+//
+//        fun getDatabase(context: Context): AppDatabase{
+//            val tempInstance = INSTANCE
+//            if(tempInstance != null){
+//                return tempInstance
+//            }
+//
+//            synchronized(this){
+//                val instance = Room.databaseBuilder(
+//                    context.applicationContext,
+//                    AppDatabase::class.java,
+//                    "app_database"
+//                ).build()
+//                INSTANCE = instance
+//                return instance
+//            }
+//        }
+
+
+

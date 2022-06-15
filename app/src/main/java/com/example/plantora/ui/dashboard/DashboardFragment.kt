@@ -26,7 +26,11 @@ class DashboardFragment : Fragment() {
     private val binding get() = _binding!!
 
 
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
 
+
+    }
 
 
     override fun onCreateView(
@@ -44,6 +48,7 @@ class DashboardFragment : Fragment() {
             val intent = Intent (getActivity(), AddPostActivity::class.java)
                getActivity()?.startActivity(intent)
         }
+
 
 
 
