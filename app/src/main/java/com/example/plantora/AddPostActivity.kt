@@ -6,10 +6,7 @@ import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.Button
-import android.widget.EditText
-import android.widget.ImageView
-import android.widget.ListView
+import android.widget.*
 import androidx.activity.result.contract.ActivityResultContracts
 import com.example.plantora.data.classes.AppDatabase
 import com.example.plantora.data.classes.Post
@@ -47,15 +44,16 @@ class AddPostActivity : AppCompatActivity() {
                 imagePost.setImageBitmap(bitmap)
             }
 
-        val listPosts = findViewById<ListView>(R.id.)
-        val adapter = PostAdaptor(this, R.layout.item_post,postsArray)
-        listPosts.adapter = adapter
+//        val listPosts = findViewById<ListView>(R.id.)
+//        val adapter = PostAdaptor(this, R.layout.recycler_item_accueil,postsArray)
+//        listPosts.adapter = adapter
 
         imagePost.setOnClickListener {
 
-            val intentImg = Intent(Intent.ACTION_GET_CONTENT)
-            intentImg.type = "image/*"
-            startActivityForResult(intentImg, 100)
+            galleryLauncher.launch("image/*")
+//            val intentImg = Intent(Intent.ACTION_GET_CONTENT)
+//            intentImg.type = "image/*"
+//            startActivityForResult(intentImg, 100)
         }
 
         btnValidate.setOnClickListener {
@@ -64,10 +62,22 @@ class AddPostActivity : AppCompatActivity() {
             val description = editDescriptionPost.toString()
             val mail = editEmailPost.toString()
             val ville = editCityPost.toString()
-            val imageBlob : ByteArray = getBytes(bitmap!!)
+            if(titre.isEmpty() || description.isEmpty() || mail.isEmpty() || ville.isEmpty()||bitmap == null ) {
+                Toast.makeText(this, "Veuillez remplir tous les champs", Toast.LENGTH_SHORT ).show();
+            }else {
+                val imageBlob: ByteArray = getBytes(bitmap!!)
 
-            val post = Post(titre, description, mail, ville, imageBlob)
-            db.addPost(post)
+                val post = Post(titre, description, mail, ville, imageBlob)
+                db.addPost(post)
+
+                editCityPost.setText("")
+                editTitlePost.setText("")
+                editDescriptionPost.setText("")
+                editEmailPost.setText("")
+                bitmap = null
+
+                finish()
+            }
         }
 
 //        btnValidate.setOnClickListener{

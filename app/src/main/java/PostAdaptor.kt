@@ -23,7 +23,8 @@ class PostAdaptor (
         val imagepostplant = itemView.findViewById<ImageView>(R.id.imagepostplant)
         tvTitre.text = post.title
         tvTitre.text = post.city
-        imagepostplant.setImageResource(post.image)
+        //imagepostplant.setImageResource(post.image)
+
 
 
         return itemView
