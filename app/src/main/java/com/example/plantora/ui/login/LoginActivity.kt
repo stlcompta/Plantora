@@ -34,13 +34,32 @@ class LoginActivity : AppCompatActivity() {
         val password = binding.password
         val login = binding.login
         val loading = binding.loading
-        //val button = findViewById<Button>(R.id.login)
+        val error = binding.error
 
 //        button.setOnClickListener {
 //        val intent = Intent(this, MainActivity::class.java)
 //           startActivity(intent)
 //       }
 
+        login.setOnClickListener{
+            val txtEmail = username.text.toString()
+            val txtPassword = password.text.toString()
+            if(txtEmail.trim().isEmpty() ||txtPassword.trim().isEmpty()){
+                error?.text ?: "Veuillez remplir tous les champs"
+                error?.visibility ?: View.VISIBLE
+            }
+            else{
+                val correctEmail = "estelle@gmail.com"
+                val correctPassword = "plantora"
+                if(correctEmail == txtEmail && correctPassword == txtPassword){
+                    Toast.makeText(this, "Bienvenue sur Plantora", Toast.LENGTH_LONG).show()
+                }
+                else{
+                    error?.text ?: "Email ou mot de passe incorrect"
+                    error?.visibility ?: View.VISIBLE
+                }
+            }
+        }
 
         loginViewModel = ViewModelProvider(this, LoginViewModelFactory())
             .get(LoginViewModel::class.java)

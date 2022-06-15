@@ -1,22 +1,22 @@
 package com.example.plantora.data.classes
 
-import android.graphics.Bitmap
-import android.widget.EditText
-import androidx.room.ColumnInfo
-import androidx.room.Entity
-import androidx.room.ForeignKey
-import androidx.room.PrimaryKey
-import java.util.*
-
-
 data class Post(
     var title: String,
     var city: String,
     var mailcontact: String,
     var description: String,
-    var image: ByteArray
+    var image: ByteArray,
+    var author: Int
 
 )
+     {
+
+    var pid: Int = -1
+
+//    constructor(pid: Int, title : String,city : String, mailcontact : String, description : String, author : Int,image: ByteArray): this (pid, title, city, mailcontact, description, author , image) {
+//        this.pid = pid
+//    }
+}
 
 
 //@Entity(tableName = "post",foreignKeys = [

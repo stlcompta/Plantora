@@ -4,9 +4,7 @@ import android.content.ContentValues
 import android.content.Context
 import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteOpenHelper
-import android.graphics.Bitmap
-import androidx.room.*
-import java.util.*
+import kotlin.collections.ArrayList
 
 class AppDatabase(mContext: Context):SQLiteOpenHelper(
     mContext,
@@ -67,6 +65,38 @@ class AppDatabase(mContext: Context):SQLiteOpenHelper(
         db.close()
         return result != -1
 
+    }
+
+    fun findPosts(): ArrayList<Post>{
+        val posts = ArrayList<Post>()
+        val db = readableDatabase
+        val chooseQuery = "SELECT * FROM $POSTS_TABLE_NAME"
+
+        val cursor = db.rawQuery(chooseQuery, null)
+
+        if(cursor != null){
+            if(cursor.moveToFirst()){
+                do {
+                    val id = cursor.getInt(cursor.getColumnIndexOrThrow(POSTS_ID))
+                    val titre = cursor.getString(cursor.getColumnIndexOrThrow(TITLE))
+                    val description = cursor.getString(cursor.getColumnIndexOrThrow(DESCRIPTION))
+                    val email = cursor.getString(cursor.getColumnIndexOrThrow(EMAIL))
+                    val city = cursor.getString(cursor.getColumnIndexOrThrow(CITY))
+                    val author = cursor.getInt(cursor.getColumnIndexOrThrow(AUTHOR))
+                    val image = cursor.getBlob(cursor.getColumnIndexOrThrow(IMAGE))
+                   // val post = Post(id, titre, city, email,description,author )
+//                    (pid: Int, title : String,city : String, mailcontact : String, description : String, author : Int,image: ByteArray): this (pid, title, city, mailcontact, description, author , image) {
+//                           this.pid = pi
+
+                  // posts.add(cursor.moveToNext())
+                }while (cursor.moveToNext())
+            }
+        }
+
+        db.close()
+
+
+        return posts
     }
 
     companion object {

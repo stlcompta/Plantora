@@ -1,7 +1,5 @@
 package com.example.plantora
 
-import PostAdaptor
-import android.content.Intent
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import androidx.appcompat.app.AppCompatActivity
@@ -67,8 +65,8 @@ class AddPostActivity : AppCompatActivity() {
             }else {
                 val imageBlob: ByteArray = getBytes(bitmap!!)
 
-                val post = Post(titre, description, mail, ville, imageBlob)
-                db.addPost(post)
+                //val post = Post(titre, description, mail, ville, imageBlob)
+                //db.addPost(post)
 
                 editCityPost.setText("")
                 editTitlePost.setText("")

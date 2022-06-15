@@ -30,6 +30,8 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        //val email = intent.getStringExtra("email")
+
 
         val navView: BottomNavigationView = binding.navView
 
