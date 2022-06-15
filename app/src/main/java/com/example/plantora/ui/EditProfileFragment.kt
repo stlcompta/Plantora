@@ -4,21 +4,15 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
-import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
-import androidx.navigation.NavController
 import androidx.navigation.Navigation
 import com.example.plantora.MainActivity
+import com.example.plantora.MainActivity.Companion.txtMail
 import com.example.plantora.R
-import com.example.plantora.databinding.ActivityLogin2Binding
-import com.example.plantora.databinding.ActivityMainBinding
 import com.example.plantora.databinding.EditProfileBinding
-import com.example.plantora.databinding.FragmentDashboardBinding
-import com.example.plantora.ui.dashboard.DashboardViewModel
-import com.example.plantora.ui.notifications.NotificationsViewModel
+import com.google.android.material.textfield.TextInputLayout
 
 
 class EditProfileFragment : Fragment() {
@@ -48,7 +42,9 @@ class EditProfileFragment : Fragment() {
         val mail = binding.username2
         val error2 = binding.error2
         val button = binding.button
-        lateinit var txtMail : String
+        val username2 = binding.username2
+
+        val layoutUser: TextInputLayout
 //        //BINDING VOIR RECYCLER VIEW ADAPTER ARTIST
 //        val textView: TextView = binding.textDashboard
 //        dashboardViewModel.text.observe(viewLifecycleOwner) {
@@ -62,7 +58,7 @@ class EditProfileFragment : Fragment() {
 
 
             if (txtMail.trim().isEmpty()) {
-                error2.text = "Veuillez remplir tous les champs"
+                error2.text = "Veuillez remplir l'adresse mail"
                 error2.visibility = View.VISIBLE
             } else {
                 val correctEmail = "estelle.ganot@gmail.com"

@@ -20,9 +20,11 @@ class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
     private lateinit var navController: NavController
 
+
     companion object{
         private const val TAG = "MyActivity"
         var email : String = ""
+        var txtMail : String = ""
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
