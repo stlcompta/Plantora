@@ -16,6 +16,7 @@ import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
 import com.example.plantora.MainActivity
+import com.example.plantora.MainActivity.Companion.email
 import com.example.plantora.databinding.ActivityLogin2Binding
 
 import com.example.plantora.R
@@ -38,6 +39,11 @@ class LoginActivity : AppCompatActivity() {
         val loading = binding.loading
         //val error = binding.error
         val error = findViewById<TextView>(R.id.error)
+        var txtEmail : String
+        var txtPassword : String
+        txtEmail = ""
+        email = txtEmail
+
 
 //        button.setOnClickListener {
 //        val intent = Intent(this, MainActivity::class.java)
@@ -45,8 +51,9 @@ class LoginActivity : AppCompatActivity() {
 //       }
 
         login.setOnClickListener{
-            val txtEmail = username.text.toString()
-            val txtPassword = password.text.toString()
+            txtEmail = username.text.toString()
+            txtPassword = password.text.toString()
+            email = txtEmail
 
 
             if(txtEmail.trim().isEmpty() ||txtPassword.trim().isEmpty()){
@@ -56,7 +63,8 @@ class LoginActivity : AppCompatActivity() {
             else{
                 val correctEmail = "estelle.ganot@gmail.com"
                 val correctPassword = "plantora"
-                if(correctEmail == txtEmail && correctPassword == txtPassword){
+                email = txtEmail
+                if(correctEmail.equals(txtEmail) && correctPassword.equals(txtPassword)){
 //                    Toast.makeText(this, "Bienvenue sur Plantora", Toast.LENGTH_LONG).show()
 //                    loading.visibility = View.VISIBLE
 //                    val intentToNotificationsFragment = Intent(this, NotificationsFragment::class.java)
@@ -67,7 +75,7 @@ class LoginActivity : AppCompatActivity() {
 //                    fragment.arguments = bundle
 //                    supportFragmentManager.beginTransaction().replace(R.id.tvMail,NotificationsFragment).commit()
 
-                    MainActivity.email = txtEmail
+                    email = txtEmail
                     loginViewModel.login(username.text.toString(), password.text.toString())
                 }
                 else{

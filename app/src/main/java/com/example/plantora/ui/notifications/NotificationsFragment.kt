@@ -53,8 +53,9 @@ class NotificationsFragment : Fragment() {
 //            val intent = Intent (getActivity(), EditProfileFragment::class.java)
 //            getActivity()?.startActivity(intent)
 //        }
-         email = MainActivity.email
-        _binding!!.tvMail.setText(email)
+
+        var email = MainActivity.email
+        _binding!!.tvMail.text = email
 
 
 

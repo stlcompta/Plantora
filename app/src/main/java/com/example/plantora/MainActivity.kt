@@ -22,7 +22,7 @@ class MainActivity : AppCompatActivity() {
 
     companion object{
         private const val TAG = "MyActivity"
-        lateinit var email : String
+        var email : String = ""
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
