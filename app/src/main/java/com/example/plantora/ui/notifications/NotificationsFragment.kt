@@ -1,5 +1,6 @@
 package com.example.plantora.ui.notifications
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -7,7 +8,12 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.Navigation
+import androidx.navigation.findNavController
+import com.example.plantora.AddPostActivity
+import com.example.plantora.R
 import com.example.plantora.databinding.FragmentNotificationsBinding
+import com.example.plantora.ui.EditProfileFragment
 
 class NotificationsFragment : Fragment() {
 
@@ -28,10 +34,22 @@ class NotificationsFragment : Fragment() {
         _binding = FragmentNotificationsBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
-        val textView: TextView = binding.textNotifications
-        notificationsViewModel.text.observe(viewLifecycleOwner) {
-            textView.text = it
+        //val textView: TextView = binding.tvMail
+//        notificationsViewModel.text.observe(viewLifecycleOwner) {
+//            textView.text = it
+//        }
+
+        _binding!!.editProfileButton.setOnClickListener{view ->
+            //view.findNavController().navigate(R.id.EditProfileFragment)
+            Navigation.findNavController(view).navigate(R.id.action_navigation_notifications_to_editProfileFragment)
         }
+
+//        _binding!!.editProfileButton.setOnClickListener{
+//            val intent = Intent (getActivity(), EditProfileFragment::class.java)
+//            getActivity()?.startActivity(intent)
+//        }
+
+
         return root
     }
 

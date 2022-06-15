@@ -12,7 +12,6 @@ import com.example.plantora.databinding.EditProfileBinding
 import com.example.plantora.databinding.FragmentDashboardBinding
 import com.example.plantora.ui.dashboard.DashboardViewModel
 
-//TODO reprendre ce copier coller et l'adapter
 
 class EditProfileFragment : Fragment() {
 
