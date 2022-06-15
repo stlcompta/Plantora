@@ -54,7 +54,7 @@ class LoginActivity : AppCompatActivity() {
                 error.visibility = View.VISIBLE
             }
             else{
-                val correctEmail = "estelle@gmail.com"
+                val correctEmail = "estelle.ganot@gmail.com"
                 val correctPassword = "plantora"
                 if(correctEmail == txtEmail && correctPassword == txtPassword){
 //                    Toast.makeText(this, "Bienvenue sur Plantora", Toast.LENGTH_LONG).show()

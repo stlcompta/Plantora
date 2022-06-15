@@ -13,6 +13,7 @@ import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
 import com.example.plantora.AddPostActivity
 import com.example.plantora.MainActivity
+import com.example.plantora.MainActivity.Companion.email
 import com.example.plantora.R
 import com.example.plantora.databinding.FragmentNotificationsBinding
 import com.example.plantora.ui.EditProfileFragment
@@ -52,8 +53,8 @@ class NotificationsFragment : Fragment() {
 //            val intent = Intent (getActivity(), EditProfileFragment::class.java)
 //            getActivity()?.startActivity(intent)
 //        }
-//        var email = MainActivity.email
-//        _binding!!.tvMail.text = email
+         email = MainActivity.email
+        _binding!!.tvMail.setText(email)
 
 
 
