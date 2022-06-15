@@ -39,7 +39,7 @@ class HomeFragment : Fragment() {
             val intent = Intent (getActivity(), AddPostActivity::class.java)
             getActivity()?.startActivity(intent)
         }
-        
+
         return root
     }
 

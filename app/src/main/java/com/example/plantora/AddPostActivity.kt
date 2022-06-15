@@ -37,9 +37,9 @@ class AddPostActivity : AppCompatActivity() {
             startActivityForResult(intentImg, 100)
         }
 
-        btnValidate.setOnClickListener{
-
-        }
+//        btnValidate.setOnClickListener{
+//
+//        }
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
