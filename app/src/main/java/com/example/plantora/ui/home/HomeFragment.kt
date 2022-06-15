@@ -13,7 +13,6 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.example.plantora.AddPostActivity
 import com.example.plantora.MainActivity
-import com.example.plantora.MainActivity.Companion.listPosts
 import com.example.plantora.R
 import com.example.plantora.data.classes.Post
 import com.example.plantora.databinding.FragmentHomeBinding
@@ -25,6 +24,7 @@ class HomeFragment : Fragment() {
     // This property is only valid between onCreateView and
     // onDestroyView.
     private val binding get() = _binding!!
+    var postsArray = ArrayList<Post>()
 
     lateinit var adapter: PostAdaptor
 
@@ -63,8 +63,10 @@ class HomeFragment : Fragment() {
             val intent = Intent (getActivity(), AddPostActivity::class.java)
             getActivity()?.startActivity(intent)
         }
-
-        MainActivity.listPosts = binding.listPosts
+        var listPosts : ListView
+        listPosts = binding.listPosts
+        val adapter = this.parentFragment?.context?.let { PostAdaptor(it, R.layout.recycler_item_accueil,postsArray) }
+        listPosts.adapter = adapter
 
 //        _binding!!.
 //        listPosts = findView

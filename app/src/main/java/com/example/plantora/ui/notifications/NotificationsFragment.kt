@@ -34,6 +34,7 @@ class NotificationsFragment : Fragment() {
         val notificationsViewModel =
             ViewModelProvider(this).get(NotificationsViewModel::class.java)
 
+
         _binding = FragmentNotificationsBinding.inflate(inflater, container, false)
         val root: View = binding.root
         email = MainActivity.email

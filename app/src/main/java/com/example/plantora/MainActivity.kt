@@ -31,7 +31,7 @@ class MainActivity : AppCompatActivity() {
         private const val TAG = "MyActivity"
         var email : String = ""
         var txtMail : String = ""
-        lateinit var listPosts : ListView
+       // var listPosts : ListView =
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -60,9 +60,13 @@ class MainActivity : AppCompatActivity() {
         setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)
 
+        //this.par
 
-        val adapter = PostAdaptor(this, R.layout.recycler_item_accueil,postsArray)
-        listPosts.adapter = adapter
+
+//        MainActivity.listPosts = binding.listPosts
+//        val adapter = PostAdaptor(this, R.layout.recycler_item_accueil,postsArray)
+//        listPosts.adapter = adapter
+
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
