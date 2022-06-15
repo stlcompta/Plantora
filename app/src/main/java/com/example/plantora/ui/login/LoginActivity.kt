@@ -47,7 +47,7 @@ class LoginActivity : AppCompatActivity() {
         login.setOnClickListener{
             val txtEmail = username.text.toString()
             val txtPassword = password.text.toString()
-            MainActivity.email = txtEmail
+
 
             if(txtEmail.trim().isEmpty() ||txtPassword.trim().isEmpty()){
                 error.text = "Veuillez remplir tous les champs"
@@ -67,7 +67,7 @@ class LoginActivity : AppCompatActivity() {
 //                    fragment.arguments = bundle
 //                    supportFragmentManager.beginTransaction().replace(R.id.tvMail,NotificationsFragment).commit()
 
-
+                    MainActivity.email = txtEmail
                     loginViewModel.login(username.text.toString(), password.text.toString())
                 }
                 else{

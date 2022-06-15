@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.NavController
@@ -33,6 +34,7 @@ class EditProfileFragment : Fragment() {
         val root: View = binding.root
 
 
+
 //        //BINDING VOIR RECYCLER VIEW ADAPTER ARTIST
 //        val textView: TextView = binding.textDashboard
 //        dashboardViewModel.text.observe(viewLifecycleOwner) {
@@ -40,6 +42,11 @@ class EditProfileFragment : Fragment() {
 //        }
         return root
     }
+
+//    override fun onViewCreated(view: View?, savedInstanceState: Bundle?) {
+//        super.onViewCreated(view, savedInstanceState)
+//        getSupportActionBar().setTitle("Hello world App");
+//    }
 
     override fun onDestroyView() {
         super.onDestroyView()
