@@ -38,6 +38,8 @@ class NotificationsFragment : Fragment() {
 
         _binding = FragmentNotificationsBinding.inflate(inflater, container, false)
         val root: View = binding.root
+        email = MainActivity.email
+        _binding!!.tvMail.text = email
 
         //val textView: TextView = binding.tvMail
 //        notificationsViewModel.text.observe(viewLifecycleOwner) {
@@ -54,8 +56,6 @@ class NotificationsFragment : Fragment() {
 //            getActivity()?.startActivity(intent)
 //        }
 
-        var email = MainActivity.email
-        _binding!!.tvMail.text = email
 
 
 

@@ -15,12 +15,14 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
+import androidx.activity.viewModels
 import com.example.plantora.MainActivity
 import com.example.plantora.MainActivity.Companion.email
 import com.example.plantora.databinding.ActivityLogin2Binding
 
 import com.example.plantora.R
 import com.example.plantora.ui.notifications.NotificationsFragment
+import com.example.plantora.ui.notifications.NotificationsViewModel
 
 class LoginActivity : AppCompatActivity() {
 
@@ -39,6 +41,7 @@ class LoginActivity : AppCompatActivity() {
         val loading = binding.loading
         //val error = binding.error
         val error = findViewById<TextView>(R.id.error)
+        val notificationsViewModel : NotificationsViewModel by viewModels()
         var txtEmail : String
         var txtPassword : String
         txtEmail = ""
