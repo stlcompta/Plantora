@@ -1,4 +1,6 @@
 import android.content.Context
+import android.graphics.Bitmap
+import android.graphics.BitmapFactory
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -23,12 +25,20 @@ class PostAdaptor (
         val imagepostplant = itemView.findViewById<ImageView>(R.id.imagepostplant)
         tvTitre.text = post.title
         tvTitre.text = post.city
-        //imagepostplant.setImageResource(post.image)
+        val bitmap = getBitmap(post.image)
+        imagepostplant.setImageBitmap(bitmap)
 
 
 
         return itemView
 
     }
+
+    fun getBitmap(byteArray: ByteArray) : Bitmap {
+        val bitmap = BitmapFactory.decodeByteArray(byteArray, 0 , byteArray.size)
+        return bitmap
+    }
+
+
 
 }

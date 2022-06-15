@@ -1,5 +1,6 @@
 package com.example.plantora
 
+import android.content.Intent
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import androidx.appcompat.app.AppCompatActivity
@@ -60,13 +61,14 @@ class AddPostActivity : AppCompatActivity() {
             val description = editDescriptionPost.toString()
             val mail = editEmailPost.toString()
             val ville = editCityPost.toString()
+            val author = 1
             if(titre.isEmpty() || description.isEmpty() || mail.isEmpty() || ville.isEmpty()||bitmap == null ) {
                 Toast.makeText(this, "Veuillez remplir tous les champs", Toast.LENGTH_SHORT ).show();
             }else {
                 val imageBlob: ByteArray = getBytes(bitmap!!)
 
-                //val post = Post(titre, description, mail, ville, imageBlob)
-                //db.addPost(post)
+                val post = Post(titre, ville, mail, description, imageBlob, author)
+                db.addPost(post)
 
                 editCityPost.setText("")
                 editTitlePost.setText("")

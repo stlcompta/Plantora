@@ -1,5 +1,7 @@
 package com.example.plantora.data.classes
 
+import android.database.sqlite.SQLiteOpenHelper
+
 data class Post(
     var title: String,
     var city: String,
@@ -8,14 +10,13 @@ data class Post(
     var image: ByteArray,
     var author: Int
 
-)
-     {
+) {
 
     var pid: Int = -1
 
-//    constructor(pid: Int, title : String,city : String, mailcontact : String, description : String, author : Int,image: ByteArray): this (pid, title, city, mailcontact, description, author , image) {
-//        this.pid = pid
-//    }
+   constructor(pid: Int, title : String,city : String, mailcontact : String, description : String, author : Int,image: ByteArray): this (title, city, mailcontact, description, image, author) {
+        this.pid = pid
+    }
 }
 
 

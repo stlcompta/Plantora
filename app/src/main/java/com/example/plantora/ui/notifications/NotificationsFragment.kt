@@ -1,22 +1,20 @@
 package com.example.plantora.ui.notifications
 
+import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.Navigation
-import androidx.navigation.findNavController
-import androidx.navigation.fragment.findNavController
-import com.example.plantora.AddPostActivity
 import com.example.plantora.MainActivity
 import com.example.plantora.MainActivity.Companion.email
 import com.example.plantora.R
 import com.example.plantora.databinding.FragmentNotificationsBinding
-import com.example.plantora.ui.EditProfileFragment
+import com.example.plantora.ui.login.LoginActivity
+
 
 class NotificationsFragment : Fragment() {
 
@@ -49,6 +47,13 @@ class NotificationsFragment : Fragment() {
         _binding!!.editProfileButton.setOnClickListener{view ->
             //view.findNavController().navigate(R.id.EditProfileFragment)
             Navigation.findNavController(view).navigate(R.id.action_navigation_notifications_to_editProfileFragment)
+        }
+
+        _binding!!.buttonLogout.setOnClickListener{ view ->
+            val i = Intent(activity, LoginActivity::class.java)
+            startActivity(i)
+            (activity as Activity?)!!.overridePendingTransition(0, 0)
+
         }
 
 //        _binding!!.editProfileButton.setOnClickListener{

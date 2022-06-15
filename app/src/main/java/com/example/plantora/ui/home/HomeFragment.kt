@@ -12,6 +12,8 @@ import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.example.plantora.AddPostActivity
+import com.example.plantora.MainActivity
+import com.example.plantora.MainActivity.Companion.listPosts
 import com.example.plantora.R
 import com.example.plantora.data.classes.Post
 import com.example.plantora.databinding.FragmentHomeBinding
@@ -25,7 +27,7 @@ class HomeFragment : Fragment() {
     private val binding get() = _binding!!
 
     lateinit var adapter: PostAdaptor
-    var postsArray = ArrayList<Post>()
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -62,9 +64,8 @@ class HomeFragment : Fragment() {
             getActivity()?.startActivity(intent)
         }
 
-        //var listPosts = _binding!!.listPosts
-        //val adapter = PostAdaptor(this, R.layout.recycler_item_accueil,postsArray)
-        //listPosts.adapter = adapter
+        MainActivity.listPosts = binding.listPosts
+
 //        _binding!!.
 //        listPosts = findView
 //        listPosts = PostAdaptor(this, R.layout.recycler_item_accueil, postsArray)

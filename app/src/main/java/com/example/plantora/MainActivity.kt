@@ -1,10 +1,12 @@
 package com.example.plantora
 
+import PostAdaptor
 import android.os.Bundle
 import android.util.Log
 import android.view.Menu
 import android.view.View
 import android.widget.ArrayAdapter
+import android.widget.ListView
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.SearchView
@@ -14,18 +16,22 @@ import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
+import com.example.plantora.data.classes.AppDatabase
+import com.example.plantora.data.classes.Post
 import com.example.plantora.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
     private lateinit var navController: NavController
-
+    lateinit var db : AppDatabase
+    var postsArray = ArrayList<Post>()
 
     companion object{
         private const val TAG = "MyActivity"
         var email : String = ""
         var txtMail : String = ""
+        lateinit var listPosts : ListView
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -35,6 +41,7 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        db = AppDatabase(this)
         val email = intent.getStringExtra("email")
         //val tvMail: View = binding.tvMail
 
@@ -53,6 +60,9 @@ class MainActivity : AppCompatActivity() {
         setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)
 
+
+        val adapter = PostAdaptor(this, R.layout.recycler_item_accueil,postsArray)
+        listPosts.adapter = adapter
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
