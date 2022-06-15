@@ -13,4 +13,12 @@
     <string name="invalid_username">E-mail invalide</string>
     <string name="invalid_password">Le mot de passe doit contenir plus de 5 caractères</string>
     <string name="login_failed">"Echec de la connexion"</string>
+    <string-array name="posts">
+        <item> Post 1</item>
+        <item> Post 2</item>
+        <item> Post 3</item>
+        <item> Post 1</item>
+        <item> Post 2</item>
+        <item> Post 3</item>
+    </string-array>
 </resources>

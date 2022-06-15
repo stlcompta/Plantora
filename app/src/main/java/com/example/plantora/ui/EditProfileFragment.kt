@@ -41,18 +41,13 @@ class EditProfileFragment : Fragment() {
 
         val mail = binding.username2
         val error2 = binding.error2
-        val button = binding.button
+        val buttonLogout = binding.buttonLogout
         val username2 = binding.username2
 
         val layoutUser: TextInputLayout
-//        //BINDING VOIR RECYCLER VIEW ADAPTER ARTIST
-//        val textView: TextView = binding.textDashboard
-//        dashboardViewModel.text.observe(viewLifecycleOwner) {
-//            textView.text = it
-//        }
 
 
-        _binding!!.button.setOnClickListener {
+        _binding!!.buttonLogout.setOnClickListener {
             txtMail = mail.text.toString()
             MainActivity.email = txtMail
 
@@ -61,8 +56,6 @@ class EditProfileFragment : Fragment() {
                 error2.text = "Veuillez remplir l'adresse mail"
                 error2.visibility = View.VISIBLE
             } else {
-                val correctEmail = "estelle.ganot@gmail.com"
-                val correctPassword = "plantora"
                 MainActivity.email = txtMail
                 Navigation.findNavController(requireView()).navigate(R.id.action_editProfileFragment_to_navigation_notifications)
             }
