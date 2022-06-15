@@ -2,6 +2,7 @@ package com.example.plantora.ui
 
 import android.os.Bundle
 import android.view.LayoutInflater
+import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
@@ -24,6 +25,10 @@ class EditProfileFragment : Fragment() {
     private val binding get() = _binding!!
 
 
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setHasOptionsMenu(true);
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -68,11 +73,22 @@ class EditProfileFragment : Fragment() {
 //        super.onViewCreated(view, savedInstanceState)
 //        getSupportActionBar().setTitle("Hello world App");
 //    }
-
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        // Handle presses on the action bar menu items
+        when (item.itemId) {
+            android.R.id.home -> {
+                activity?.onBackPressed()
+                return true
+            }
+        }
+    return super.onOptionsItemSelected(item)
+}
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
     }
+
+
 
 
 //    private lateinit var binding: EditProfileBinding

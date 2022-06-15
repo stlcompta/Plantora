@@ -65,8 +65,13 @@ class HomeFragment : Fragment() {
         }
         var listPosts : ListView
         listPosts = binding.listPosts
-        val adapter = this.parentFragment?.context?.let { PostAdaptor(it, R.layout.recycler_item_accueil,postsArray) }
+        var adapter = this.parentFragment?.context?.let { PostAdaptor(it, R.layout.recycler_item_accueil,postsArray) }
         listPosts.adapter = adapter
+
+//        listPosts.setOnItemClickListener{ adapterView, view, id ->
+//            val clickedPost = postsArray[position]
+//        }
+        registerForContextMenu(listPosts)
 
 //        _binding!!.
 //        listPosts = findView
