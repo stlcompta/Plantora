@@ -10,7 +10,9 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.Navigation
 import androidx.navigation.findNavController
+import androidx.navigation.fragment.findNavController
 import com.example.plantora.AddPostActivity
+import com.example.plantora.MainActivity
 import com.example.plantora.R
 import com.example.plantora.databinding.FragmentNotificationsBinding
 import com.example.plantora.ui.EditProfileFragment
@@ -22,6 +24,8 @@ class NotificationsFragment : Fragment() {
     // This property is only valid between onCreateView and
     // onDestroyView.
     private val binding get() = _binding!!
+
+
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -48,6 +52,10 @@ class NotificationsFragment : Fragment() {
 //            val intent = Intent (getActivity(), EditProfileFragment::class.java)
 //            getActivity()?.startActivity(intent)
 //        }
+        var email = MainActivity.email
+        _binding!!.tvMail.text = email
+
+
 
 
         return root

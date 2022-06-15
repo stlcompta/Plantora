@@ -3,6 +3,7 @@ package com.example.plantora
 import android.os.Bundle
 import android.util.Log
 import android.view.Menu
+import android.view.View
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.SearchView
@@ -21,6 +22,7 @@ class MainActivity : AppCompatActivity() {
 
     companion object{
         private const val TAG = "MyActivity"
+        lateinit var email : String
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -30,8 +32,10 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        //val email = intent.getStringExtra("email")
+        val email = intent.getStringExtra("email")
+        //val tvMail: View = binding.tvMail
 
+       // val mail = intent.getString
 
         val navView: BottomNavigationView = binding.navView
 

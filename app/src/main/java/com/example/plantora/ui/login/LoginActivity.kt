@@ -19,6 +19,7 @@ import com.example.plantora.MainActivity
 import com.example.plantora.databinding.ActivityLogin2Binding
 
 import com.example.plantora.R
+import com.example.plantora.ui.notifications.NotificationsFragment
 
 class LoginActivity : AppCompatActivity() {
 
@@ -46,6 +47,8 @@ class LoginActivity : AppCompatActivity() {
         login.setOnClickListener{
             val txtEmail = username.text.toString()
             val txtPassword = password.text.toString()
+            MainActivity.email = txtEmail
+
             if(txtEmail.trim().isEmpty() ||txtPassword.trim().isEmpty()){
                 error.text = "Veuillez remplir tous les champs"
                 error.visibility = View.VISIBLE
@@ -56,6 +59,15 @@ class LoginActivity : AppCompatActivity() {
                 if(correctEmail == txtEmail && correctPassword == txtPassword){
 //                    Toast.makeText(this, "Bienvenue sur Plantora", Toast.LENGTH_LONG).show()
 //                    loading.visibility = View.VISIBLE
+//                    val intentToNotificationsFragment = Intent(this, NotificationsFragment::class.java)
+//                    intentToNotificationsFragment.putExtra("email",txtEmail)
+//                    val fragment = NotificationsFragment()
+//                    val bundle = Bundle()
+//                    bundle.putString("email",txtEmail)
+//                    fragment.arguments = bundle
+//                    supportFragmentManager.beginTransaction().replace(R.id.tvMail,NotificationsFragment).commit()
+
+
                     loginViewModel.login(username.text.toString(), password.text.toString())
                 }
                 else{
