@@ -1,7 +1,5 @@
 package com.example.plantora.data.classes
 
-import android.database.sqlite.SQLiteOpenHelper
-
 data class Post(
     var title: String,
     var city: String,

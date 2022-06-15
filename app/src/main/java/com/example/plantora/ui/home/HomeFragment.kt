@@ -6,7 +6,6 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ArrayAdapter
 import android.widget.ListView
 import android.widget.TextView
 import androidx.fragment.app.Fragment
@@ -14,6 +13,7 @@ import androidx.lifecycle.ViewModelProvider
 import com.example.plantora.AddPostActivity
 import com.example.plantora.MainActivity
 import com.example.plantora.R
+import com.example.plantora.data.classes.AppDatabase
 import com.example.plantora.data.classes.Post
 import com.example.plantora.databinding.FragmentHomeBinding
 
@@ -59,12 +59,17 @@ class HomeFragment : Fragment() {
             textView.text = it
         }
 
+        //TODO initialiser la database pour l'utiliser
+        //var db : AppDatabase
+        //db = AppDatabase(this)
         _binding!!.itemAdd.setOnClickListener{
             val intent = Intent (getActivity(), AddPostActivity::class.java)
             getActivity()?.startActivity(intent)
         }
         var listPosts : ListView
         listPosts = binding.listPosts
+
+       // postsArray = db.findPosts()
         var adapter = this.parentFragment?.context?.let { PostAdaptor(it, R.layout.recycler_item_accueil,postsArray) }
         listPosts.adapter = adapter
 
@@ -85,6 +90,7 @@ class HomeFragment : Fragment() {
 
         return root
     }
+
 
     override fun onDestroyView() {
         super.onDestroyView()

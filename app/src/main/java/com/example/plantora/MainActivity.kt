@@ -24,7 +24,8 @@ class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
     private lateinit var navController: NavController
-    lateinit var db : AppDatabase
+    var db = AppDatabase(this)
+
     var postsArray = ArrayList<Post>()
 
     companion object{
@@ -41,6 +42,7 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        //var db : AppDatabase
         db = AppDatabase(this)
         val email = intent.getStringExtra("email")
         //val tvMail: View = binding.tvMail
@@ -72,6 +74,8 @@ class MainActivity : AppCompatActivity() {
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
         // Inflate the menu; this adds items to the action bar if it is present.
         menuInflater.inflate(R.menu.menu_main, menu)
+        var db : AppDatabase
+        db = AppDatabase(this)
         val search = menu.findItem(R.id.action_search)
         val searchView: SearchView = search.actionView as SearchView
 

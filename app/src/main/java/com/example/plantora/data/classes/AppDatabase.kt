@@ -84,11 +84,8 @@ class AppDatabase(mContext: Context):SQLiteOpenHelper(
                     val city = cursor.getString(cursor.getColumnIndexOrThrow(CITY))
                     val author = cursor.getInt(cursor.getColumnIndexOrThrow(AUTHOR))
                     val image = cursor.getBlob(cursor.getColumnIndexOrThrow(IMAGE))
-                   // val post = Post(id, titre, city, email,description,author )
-//                    (pid: Int, title : String,city : String, mailcontact : String, description : String, author : Int,image: ByteArray): this (pid, title, city, mailcontact, description, author , image) {
-//                           this.pid = pi
-
-                  // posts.add(cursor.moveToNext())
+                    val post = Post(id, titre, city, email,description,author,image )
+                    posts.add(post)
                 }while (cursor.moveToNext())
             }
         }
