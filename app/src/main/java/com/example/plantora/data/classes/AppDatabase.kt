@@ -61,9 +61,9 @@ class AppDatabase(mContext: Context):SQLiteOpenHelper(
         values.put(EMAIL, post.mailcontact)
         values.put(IMAGE, post.image)
 
-        val result = db.insert(POSTS_TABLE_NAME, null, values).toInt()
+        val result = db.insert(POSTS_TABLE_NAME, null, values)
         db.close()
-        return result != -1
+        return result != -1L
 
     }
 
