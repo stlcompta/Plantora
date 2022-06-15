@@ -13,6 +13,7 @@ import android.view.View
 import android.view.inputmethod.EditorInfo
 import android.widget.Button
 import android.widget.EditText
+import android.widget.TextView
 import android.widget.Toast
 import com.example.plantora.MainActivity
 import com.example.plantora.databinding.ActivityLogin2Binding
@@ -34,7 +35,8 @@ class LoginActivity : AppCompatActivity() {
         val password = binding.password
         val login = binding.login
         val loading = binding.loading
-        val error = binding.error
+        //val error = binding.error
+        val error = findViewById<TextView>(R.id.error)
 
 //        button.setOnClickListener {
 //        val intent = Intent(this, MainActivity::class.java)
@@ -45,18 +47,20 @@ class LoginActivity : AppCompatActivity() {
             val txtEmail = username.text.toString()
             val txtPassword = password.text.toString()
             if(txtEmail.trim().isEmpty() ||txtPassword.trim().isEmpty()){
-                error?.text ?: "Veuillez remplir tous les champs"
-                error?.visibility ?: View.VISIBLE
+                error.text = "Veuillez remplir tous les champs"
+                error.visibility = View.VISIBLE
             }
             else{
                 val correctEmail = "estelle@gmail.com"
                 val correctPassword = "plantora"
                 if(correctEmail == txtEmail && correctPassword == txtPassword){
-                    Toast.makeText(this, "Bienvenue sur Plantora", Toast.LENGTH_LONG).show()
+//                    Toast.makeText(this, "Bienvenue sur Plantora", Toast.LENGTH_LONG).show()
+//                    loading.visibility = View.VISIBLE
+                    loginViewModel.login(username.text.toString(), password.text.toString())
                 }
                 else{
-                    error?.text ?: "Email ou mot de passe incorrect"
-                    error?.visibility ?: View.VISIBLE
+                    error.text = "Email ou mot de passe incorrect"
+                    error.visibility = View.VISIBLE
                 }
             }
         }
@@ -107,7 +111,7 @@ class LoginActivity : AppCompatActivity() {
         }
 
         password.apply {
-            afterTextChanged {
+            afterTextChanged{
                 loginViewModel.loginDataChanged(
                     username.text.toString(),
                     password.text.toString()
@@ -125,10 +129,10 @@ class LoginActivity : AppCompatActivity() {
                 false
             }
 
-            login.setOnClickListener {
-                loading.visibility = View.VISIBLE
-                loginViewModel.login(username.text.toString(), password.text.toString())
-            }
+//            login.setOnClickListener {
+//                loading.visibility = View.VISIBLE
+//                loginViewModel.login(username.text.toString(), password.text.toString())
+//            }
         }
     }
 
