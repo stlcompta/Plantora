@@ -78,10 +78,9 @@ class HomeFragment : Fragment() {
 
         listPosts.setOnItemClickListener{ adapterView, view, position, id ->
             val clickedPost = postsArray[position]
-            //
             val intent = Intent (getActivity(), DetailsPostActivity::class.java)
-            val send = clickedPost.pid
-            intent.putExtra("titre",send)
+            val send = clickedPost.title
+            intent.putExtra("title",send)
             getActivity()?.startActivity(intent)
            // intent.putExta("titre", clickedPost.titre)
 //            Intent(this, DetailsPostActivity::class.java).also{

@@ -25,6 +25,7 @@ class AddPostActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        setTheme(R.style.Theme_Plantora);
         setContentView(R.layout.activity_add_post)
 
         db = AppDatabase(this)

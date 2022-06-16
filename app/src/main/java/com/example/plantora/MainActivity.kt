@@ -25,6 +25,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
     private lateinit var navController: NavController
     var db = AppDatabase(this)
+    var titreMain : String = ""
 
     var postsArray = ArrayList<Post>()
 
