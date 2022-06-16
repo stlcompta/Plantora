@@ -1,6 +1,7 @@
 package com.example.plantora.ui.dashboard
 
 
+import PostAdaptor
 import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -8,13 +9,17 @@ import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.ListView
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.example.plantora.AddPostActivity
 import com.example.plantora.MainActivity
 import com.example.plantora.R
+import com.example.plantora.data.classes.AppDatabase
+import com.example.plantora.data.classes.Post
 import com.example.plantora.databinding.FragmentDashboardBinding
+import com.example.plantora.ui.home.HomeViewModel
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 
 class DashboardFragment : Fragment() {
@@ -24,12 +29,12 @@ class DashboardFragment : Fragment() {
     // This property is only valid between onCreateView and
     // onDestroyView.
     private val binding get() = _binding!!
+    var postsArray = ArrayList<Post>()
+    lateinit var adapter: PostAdaptor
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
-
     }
 
 
@@ -44,35 +49,28 @@ class DashboardFragment : Fragment() {
         _binding = FragmentDashboardBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
+        var db : AppDatabase = AppDatabase(requireContext())
+
         _binding!!.itemAdd.setOnClickListener{
             val intent = Intent (getActivity(), AddPostActivity::class.java)
                getActivity()?.startActivity(intent)
         }
 
 
+        var listMyPosts : ListView
+        listMyPosts = binding.listMyPosts
+
+        postsArray = db.findPosts()
+        var adapter = this.parentFragment?.context?.let { PostAdaptor(it, R.layout.recycler_item_mesplantes,postsArray) }
+        listMyPosts.adapter = adapter
+
+
+        registerForContextMenu(listMyPosts)
 
 
 
-
-//        //BINDING VOIR RECYCLER VIEW ADAPTER ARTIST
-//        val textView: TextView = binding.textDashboard
-//        dashboardViewModel.text.observe(viewLifecycleOwner) {
-//            textView.text = it
-//        }
-       return root
+        return root
     }
-
-//    override fun onOptionsItemSelected(item: FloatingActionButton): Boolean {
-//        when(item.it){
-//           R.id.itemAdd -> {
-//               val intent = Intent (getActivity(), AddPostActivity::class.java)
-//               getActivity()?.startActivity(intent)
-////               val intent = Intent(MainActivity, AddPostActivity::class.java)
-////               startActivity(intent)
-//            }
-//        }
-//        return super.onOptionsItemSelected(item)
-//    }
 
     override fun onDestroyView() {
         super.onDestroyView()

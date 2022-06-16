@@ -6,19 +6,6 @@
     android:layout_height="match_parent"
     tools:context=".ui.dashboard.DashboardFragment">
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/mesPlantesRecycler"
-        android:layout_width="302dp"
-        android:layout_height="6dp"
-        android:layout_marginStart="1dp"
-        android:layout_marginTop="233dp"
-        android:layout_marginEnd="108dp"
-        android:layout_marginBottom="492dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
     <androidx.coordinatorlayout.widget.CoordinatorLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -36,6 +23,14 @@
             app:srcCompat="@drawable/add"
             app:tint="#FFFFFF"
             tools:ignore="SpeakableTextPresentCheck" />
+
+        <ListView
+            android:id="@+id/listMyPosts"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="20dp" />
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

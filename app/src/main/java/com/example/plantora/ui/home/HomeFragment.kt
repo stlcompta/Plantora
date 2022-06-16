@@ -69,7 +69,6 @@ class HomeFragment : Fragment() {
         var listPosts : ListView
         listPosts = binding.listPosts
 
-        //TODO ligne en dessous qui casse
         postsArray = db.findPosts()
         var adapter = this.parentFragment?.context?.let { PostAdaptor(it, R.layout.recycler_item_accueil,postsArray) }
         listPosts.adapter = adapter
