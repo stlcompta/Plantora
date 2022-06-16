@@ -59,9 +59,9 @@ class HomeFragment : Fragment() {
             textView.text = it
         }
 
-        //TODO initialiser la database pour l'utiliser
-        //var db : AppDatabase
-        //db = AppDatabase(this)
+
+        var db : AppDatabase = AppDatabase(requireContext())
+
         _binding!!.itemAdd.setOnClickListener{
             val intent = Intent (getActivity(), AddPostActivity::class.java)
             getActivity()?.startActivity(intent)
@@ -69,7 +69,8 @@ class HomeFragment : Fragment() {
         var listPosts : ListView
         listPosts = binding.listPosts
 
-       // postsArray = db.findPosts()
+        //TODO ligne en dessous qui casse
+        postsArray = db.findPosts()
         var adapter = this.parentFragment?.context?.let { PostAdaptor(it, R.layout.recycler_item_accueil,postsArray) }
         listPosts.adapter = adapter
 
