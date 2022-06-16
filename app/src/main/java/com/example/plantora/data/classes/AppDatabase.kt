@@ -65,7 +65,7 @@ class AppDatabase(mContext: Context):SQLiteOpenHelper(
         values.put(EMAIL, post.mailcontact)
         values.put(IMAGE, post.image)
         values.put(AUTHOR, 2)
-        //TODO Modifier la base de données pour mettre une date et ordonner
+        //TODO Modifier la base de données pour mettre une date à chaque publication éventuellement
 //        val sdf = SimpleDateFormat("dd/M/yyyy hh:mm")
 //        val currentDate = sdf.format(Date())
 //        values.put(DATE, currentDate)

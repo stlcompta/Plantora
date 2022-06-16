@@ -6,16 +6,18 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.AdapterView.OnItemClickListener
 import android.widget.ListView
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.example.plantora.AddPostActivity
-import com.example.plantora.MainActivity
+import com.example.plantora.DetailsPostActivity
 import com.example.plantora.R
 import com.example.plantora.data.classes.AppDatabase
 import com.example.plantora.data.classes.Post
 import com.example.plantora.databinding.FragmentHomeBinding
+
 
 class HomeFragment : Fragment() {
 
@@ -73,9 +75,20 @@ class HomeFragment : Fragment() {
         var adapter = this.parentFragment?.context?.let { PostAdaptor(it, R.layout.recycler_item_accueil,postsArray) }
         listPosts.adapter = adapter
 
-//        listPosts.setOnItemClickListener{ adapterView, view, id ->
-//            val clickedPost = postsArray[position]
-//        }
+
+        listPosts.setOnItemClickListener{ adapterView, view, position, id ->
+            val clickedPost = postsArray[position]
+            //
+            val intent = Intent (getActivity(), DetailsPostActivity::class.java)
+            val send = clickedPost.pid
+            intent.putExtra("titre",send)
+            getActivity()?.startActivity(intent)
+           // intent.putExta("titre", clickedPost.titre)
+//            Intent(this, DetailsPostActivity::class.java).also{
+//                startActivity(it)
+//            }
+        }
+
         registerForContextMenu(listPosts)
 
 //        _binding!!.
