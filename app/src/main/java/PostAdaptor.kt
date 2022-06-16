@@ -24,7 +24,7 @@ class PostAdaptor (
         val tvCity = itemView.findViewById<TextView>(R.id.tvCity)
         val imagepostplant = itemView.findViewById<ImageView>(R.id.imagepostplant)
         tvTitre.text = post.title
-        tvTitre.text = post.city
+        tvCity.text = post.city
         val bitmap = getBitmap(post.image)
         imagepostplant.setImageBitmap(bitmap)
 
