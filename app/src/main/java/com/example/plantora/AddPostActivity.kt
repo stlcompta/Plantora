@@ -57,10 +57,10 @@ class AddPostActivity : AppCompatActivity() {
 
         btnValidate.setOnClickListener {
 
-            val titre = editTitlePost.toString()
-            val description = editDescriptionPost.toString()
-            val mail = editEmailPost.toString()
-            val ville = editCityPost.toString()
+            val titre = editTitlePost.text.toString()
+            val description = editDescriptionPost.text.toString()
+            val mail = editEmailPost.text.toString()
+            val ville = editCityPost.text.toString()
             val author = 1
             if(titre.isEmpty() || description.isEmpty() || mail.isEmpty() || ville.isEmpty()||bitmap == null ) {
                 Toast.makeText(this, "Veuillez remplir tous les champs", Toast.LENGTH_SHORT ).show();

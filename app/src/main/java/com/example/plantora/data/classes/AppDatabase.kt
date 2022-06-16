@@ -37,13 +37,13 @@ class AppDatabase(mContext: Context):SQLiteOpenHelper(
             )
             """.trimIndent()
 
-        db?.execSQL(createTableUser)
+        //db?.execSQL(createTableUser)
         db?.execSQL(createTablePosts)
     }
 
     override fun onUpgrade(db: SQLiteDatabase?, oldVersion: Int, newVersion: Int) {
         db?.execSQL("DROP TABLE IF EXISTS $POSTS_TABLE_NAME")
-        db?.execSQL("DROP TABLE IF EXISTS $USERS_TABLE_NAME")
+        //db?.execSQL("DROP TABLE IF EXISTS $USERS_TABLE_NAME")
         onCreate(db)
     }
 
