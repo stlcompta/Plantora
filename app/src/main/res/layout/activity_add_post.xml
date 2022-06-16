@@ -25,8 +25,8 @@
 
     <ImageView
         android:id="@+id/imagePost"
-        android:layout_width="220dp"
-        android:layout_height="157dp"
+        android:layout_width="280dp"
+        android:layout_height="200dp"
         android:layout_marginStart="95dp"
         android:layout_marginTop="50dp"
         android:layout_marginEnd="95dp"
@@ -84,20 +84,22 @@
 
     <EditText
         android:id="@+id/editDescriptionPost"
+        android:inputType="textMultiLine"
         android:layout_width="wrap_content"
-        android:layout_height="170dp"
+        android:layout_height="wrap_content"
         android:layout_marginBottom="100dp"
         android:width="300dp"
         android:autoText="false"
         android:ems="10"
-        android:hint="  f"
-        android:inputType="textPersonName"
+        android:minHeight="48dp"
         android:textAlignment="viewStart"
         android:textColorHint="#FFFFFF"
+        android:gravity="top|start"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.504"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        tools:ignore="SpeakableTextPresentCheck" />
 
     <Button
         android:id="@+id/btnValidate"
@@ -116,7 +118,7 @@
         android:id="@+id/textView3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="62dp"
+        android:layout_marginStart="56dp"
         android:layout_marginTop="10dp"
         android:layout_marginEnd="265dp"
         android:text="Description"
@@ -133,14 +135,16 @@
         android:layout_marginStart="58dp"
         android:layout_marginTop="224dp"
         android:layout_marginEnd="1dp"
-        android:layout_marginBottom="7dp"
+        android:layout_marginBottom="2dp"
         android:text="Titre"
         android:textColor="#000000"
         android:textSize="18sp"
         app:layout_constraintBottom_toTopOf="@+id/editTitlePost"
         app:layout_constraintEnd_toStartOf="@+id/imagePost"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0" />
 
     <TextView
         android:id="@+id/textView5"
@@ -148,6 +152,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="56dp"
         android:layout_marginEnd="232dp"
+        android:layout_marginBottom="-4dp"
         android:text="Mail de contact"
         android:textColor="#000000"
         android:textSize="18sp"
@@ -160,7 +165,7 @@
         android:id="@+id/textView6"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="57dp"
+        android:layout_marginStart="56dp"
         android:layout_marginEnd="321dp"
         android:text="Ville"
         android:textColor="#000000"
