@@ -9,10 +9,13 @@ import android.view.ViewGroup
 import android.widget.AdapterView.OnItemClickListener
 import android.widget.ListView
 import android.widget.TextView
+import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 import com.example.plantora.AddPostActivity
 import com.example.plantora.DetailsPostActivity
+import com.example.plantora.PostDetailsFragment
 import com.example.plantora.R
 import com.example.plantora.data.classes.AppDatabase
 import com.example.plantora.data.classes.Post
@@ -78,10 +81,14 @@ class HomeFragment : Fragment() {
 
         listPosts.setOnItemClickListener{ adapterView, view, position, id ->
             val clickedPost = postsArray[position]
-            val intent = Intent (getActivity(), DetailsPostActivity::class.java)
-            val send = clickedPost.title
-            intent.putExtra("title",send)
-            getActivity()?.startActivity(intent)
+            val args = bundleOf("titre" to clickedPost.title.toString())
+            val navController = parentFragment?.findNavController()
+            navController?.navigate(R.id.action_navigation_home_to_postDetailsFragment,args)
+
+//            val intent = Intent (getActivity(), PostDetailsFragment::class.java)
+//            val send = clickedPost.title
+//            intent.putExtra("title",send)
+//            getActivity()?.startActivity(intent)
            // intent.putExta("titre", clickedPost.titre)
 //            Intent(this, DetailsPostActivity::class.java).also{
 //                startActivity(it)

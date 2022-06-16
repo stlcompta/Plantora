@@ -9,6 +9,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ListView
 import android.widget.TextView
+import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import com.example.plantora.data.classes.AppDatabase
 import com.example.plantora.data.classes.Post
@@ -33,6 +34,7 @@ class PostDetailsFragment : Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
 
 //        binding = ActivityMainBinding.inflate(layoutInflater)
 //        setContentView(binding.root)
@@ -63,6 +65,18 @@ class PostDetailsFragment : Fragment() {
 
         _binding = FragmentPostDetails2Binding.inflate(inflater, container, false)
         val root: View = binding.root
+
+
+        var title :String = arguments?.get("titre").toString()
+
+        var tvPostTitre : TextView = binding.tvPostTitre
+//        val intent = Intent (getActivity(), AddPostActivity::class.java)
+//        getActivity()?.startActivity(intent)
+//        val title = intent.getStringExtra("title")
+        tvPostTitre.text = title
+
+        (activity as AppCompatActivity).supportActionBar?.title = title
+
 
 //        val textView: TextView = binding.textHome
 //
