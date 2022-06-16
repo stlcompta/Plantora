@@ -4,6 +4,10 @@ import android.content.ContentValues
 import android.content.Context
 import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteOpenHelper
+import java.text.SimpleDateFormat
+import java.time.LocalDateTime
+import java.time.format.DateTimeFormatter
+import java.util.*
 import kotlin.collections.ArrayList
 
 class AppDatabase(mContext: Context):SQLiteOpenHelper(
@@ -60,6 +64,11 @@ class AppDatabase(mContext: Context):SQLiteOpenHelper(
         values.put(CITY, post.city)
         values.put(EMAIL, post.mailcontact)
         values.put(IMAGE, post.image)
+        values.put(AUTHOR, 2)
+        //TODO Modifier la base de données pour mettre une date et ordonner
+//        val sdf = SimpleDateFormat("dd/M/yyyy hh:mm")
+//        val currentDate = sdf.format(Date())
+//        values.put(DATE, currentDate)
 
         val result = db.insert(POSTS_TABLE_NAME, null, values)
         db.close()
@@ -70,7 +79,36 @@ class AppDatabase(mContext: Context):SQLiteOpenHelper(
     fun findPosts(): ArrayList<Post>{
         val posts = ArrayList<Post>()
         val db = readableDatabase
-        val chooseQuery = "SELECT * FROM $POSTS_TABLE_NAME"
+        val chooseQuery = "SELECT * FROM $POSTS_TABLE_NAME ORDER BY id DESC"
+
+        val cursor = db.rawQuery(chooseQuery, null)
+
+        if(cursor != null){
+            if(cursor.moveToFirst()){
+                do {
+                    val id = cursor.getInt(cursor.getColumnIndexOrThrow(POSTS_ID))
+                    val titre = cursor.getString(cursor.getColumnIndexOrThrow(TITLE))
+                    val description = cursor.getString(cursor.getColumnIndexOrThrow(DESCRIPTION))
+                    val email = cursor.getString(cursor.getColumnIndexOrThrow(EMAIL))
+                    val city = cursor.getString(cursor.getColumnIndexOrThrow(CITY))
+                    val author = cursor.getInt(cursor.getColumnIndexOrThrow(AUTHOR))
+                    val image = cursor.getBlob(cursor.getColumnIndexOrThrow(IMAGE))
+                    val post = Post(id, titre, city, email,description,author,image )
+                    posts.add(post)
+                }while (cursor.moveToNext())
+            }
+        }
+
+        db.close()
+
+
+        return posts
+    }
+
+    fun findMyPosts(): ArrayList<Post>{
+        val posts = ArrayList<Post>()
+        val db = readableDatabase
+        val chooseQuery = "SELECT * FROM $POSTS_TABLE_NAME WHERE author = 2 ORDER BY id DESC"
 
         val cursor = db.rawQuery(chooseQuery, null)
 

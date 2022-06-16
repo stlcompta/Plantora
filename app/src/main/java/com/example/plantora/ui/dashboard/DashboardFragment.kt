@@ -60,7 +60,7 @@ class DashboardFragment : Fragment() {
         var listMyPosts : ListView
         listMyPosts = binding.listMyPosts
 
-        postsArray = db.findPosts()
+        postsArray = db.findMyPosts()
         var adapter = this.parentFragment?.context?.let { PostAdaptor(it, R.layout.recycler_item_mesplantes,postsArray) }
         listMyPosts.adapter = adapter
 
