@@ -4,6 +4,7 @@ import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.widget.*
 import androidx.activity.result.contract.ActivityResultContracts
 import com.example.plantora.data.classes.AppDatabase
@@ -64,8 +65,9 @@ class AddPostActivity : AppCompatActivity() {
             if(titre.isEmpty() || description.isEmpty() || mail.isEmpty() || ville.isEmpty()||bitmap == null ) {
                 Toast.makeText(this, "Veuillez remplir tous les champs", Toast.LENGTH_SHORT ).show();
             }else {
-                val imageBlob: ByteArray = getBytes(bitmap!!)
-
+                Log.e("getBytes(bitmap!!) avant", getBytes(bitmap!!).size.toString())
+                val imageBlob: ByteArray = compressImage(getBytes(bitmap!!))
+                Log.e("imagesBlob apres", imageBlob.size.toString())
                 val post = Post(titre, ville, mail, description, imageBlob, author)
                 db.addPost(post)
 
@@ -89,6 +91,18 @@ class AddPostActivity : AppCompatActivity() {
         bitmap?.compress(Bitmap.CompressFormat.PNG,0,stream)
         return stream.toByteArray()
 
+    }
+
+    fun compressImage(imageToCompress : ByteArray): ByteArray {
+        var compressImage = imageToCompress
+        while(compressImage.size > 500000){
+            val bitmap = BitmapFactory.decodeByteArray(compressImage,0,compressImage.size)
+            val resized = Bitmap.createScaledBitmap(bitmap, (bitmap.width * 0.8).toInt(), (bitmap.height * 0.8).toInt(),true)
+            val stream = ByteArrayOutputStream()
+            resized.compress(Bitmap.CompressFormat.PNG,100,stream)
+            compressImage = stream.toByteArray()
+        }
+    return compressImage
     }
 }
 
