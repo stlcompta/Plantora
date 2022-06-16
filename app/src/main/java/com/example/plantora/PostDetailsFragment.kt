@@ -5,6 +5,7 @@ import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
+import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ListView
@@ -34,6 +35,7 @@ class PostDetailsFragment : Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        setHasOptionsMenu(true);
 
 
 //        binding = ActivityMainBinding.inflate(layoutInflater)
@@ -112,6 +114,16 @@ class PostDetailsFragment : Fragment() {
 
 
         return root
+    }
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        // Handle presses on the action bar menu items
+        when (item.itemId) {
+            android.R.id.home -> {
+                activity?.onBackPressed()
+                return true
+            }
+        }
+        return super.onOptionsItemSelected(item)
     }
 
 
