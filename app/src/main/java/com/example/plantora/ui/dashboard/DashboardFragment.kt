@@ -26,8 +26,6 @@ class DashboardFragment : Fragment() {
 
     private var _binding: FragmentDashboardBinding? = null
 
-    // This property is only valid between onCreateView and
-    // onDestroyView.
     private val binding get() = _binding!!
     var postsArray = ArrayList<Post>()
     lateinit var adapter: PostAdaptor

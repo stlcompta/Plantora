@@ -10,23 +10,23 @@ import android.widget.TextView
 import com.example.plantora.R
 import com.example.plantora.data.classes.Post
 
-class PostAdaptor (
+class OnePostAdaptor (
 
     var mContext : Context,
     var ressource : Int,
     var values : ArrayList<Post>
 ) : ArrayAdapter<Post>(mContext,ressource, values){
 
-    override fun getView (position : Int, convertView: View?, parent : ViewGroup) : View{
+    override fun getView (position : Int, convertView: View?, parent : ViewGroup) : View {
         val post = values[position]
         val itemView = LayoutInflater.from(mContext).inflate(ressource,parent,false)
-        val tvTitre = itemView.findViewById<TextView>(R.id.tvTitre)
-        val tvCity = itemView.findViewById<TextView>(R.id.tvCity)
-        val imagepostplant = itemView.findViewById<ImageView>(R.id.imagepostplant)
-        tvTitre.text = post.title
-        tvCity.text = post.city
+        val tvPostTitre = itemView.findViewById<TextView>(R.id.tvPostTitre)
+        val tvPostCity = itemView.findViewById<TextView>(R.id.tvPostCity)
+        val imageView3 = itemView.findViewById<ImageView>(R.id.imageView3)
+        tvPostTitre.text = post.title
+        tvPostCity.text = post.city
         val bitmap = getBitmap(post.image)
-        imagepostplant.setImageBitmap(bitmap)
+        imageView3.setImageBitmap(bitmap)
 
         return itemView
 

@@ -18,7 +18,8 @@ data class Post(
 }
 
 
-//@Entity(tableName = "post",foreignKeys = [
+//ROOM
+// @Entity(tableName = "post",foreignKeys = [
 //    ForeignKey(entity = User::class,
 //        parentColumns = arrayOf("uid"),
 //        childColumns = arrayOf("author"),
@@ -30,7 +31,6 @@ data class Post(
 //    @ColumnInfo(name = "mailcontact") val mailcontact: String?,
 //    @ColumnInfo(name = "description") val description: String?,
 //    @ColumnInfo(name = "picture") val picture: Bitmap?,
-//    @ColumnInfo(name = "date") val date: Date?,
 //    val author: Long?
 //
 //    )

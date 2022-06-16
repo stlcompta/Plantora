@@ -13,7 +13,8 @@ data class User(
 
 )
 
-//@Entity
+//ROOM
+// @Entity
 //data class User(
 //    @PrimaryKey val uid: Int,
 //    // @ColumnInfo(name = "first_name") val firstName: String?,

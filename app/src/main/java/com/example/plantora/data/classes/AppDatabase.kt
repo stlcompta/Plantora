@@ -65,16 +65,43 @@ class AppDatabase(mContext: Context):SQLiteOpenHelper(
         values.put(EMAIL, post.mailcontact)
         values.put(IMAGE, post.image)
         values.put(AUTHOR, 2)
-        //TODO Modifier la base de données pour mettre une date à chaque publication éventuellement
-//        val sdf = SimpleDateFormat("dd/M/yyyy hh:mm")
-//        val currentDate = sdf.format(Date())
-//        values.put(DATE, currentDate)
 
         val result = db.insert(POSTS_TABLE_NAME, null, values)
         db.close()
         return result != -1L
 
     }
+
+    fun findOnePost(id : String): ArrayList<Post>{
+        val posts = ArrayList<Post>()
+        val id = id.toInt()
+        val db = readableDatabase
+        val chooseQuery = "SELECT * FROM $POSTS_TABLE_NAME WHERE id = "+id
+
+
+        val cursor = db.rawQuery(chooseQuery, null)
+
+        if(cursor != null){
+            if(cursor.moveToFirst()){
+                do {
+                    val id = cursor.getInt(cursor.getColumnIndexOrThrow(POSTS_ID))
+                    val titre = cursor.getString(cursor.getColumnIndexOrThrow(TITLE))
+                    val description = cursor.getString(cursor.getColumnIndexOrThrow(DESCRIPTION))
+                    val email = cursor.getString(cursor.getColumnIndexOrThrow(EMAIL))
+                    val city = cursor.getString(cursor.getColumnIndexOrThrow(CITY))
+                    val author = cursor.getInt(cursor.getColumnIndexOrThrow(AUTHOR))
+                    val image = cursor.getBlob(cursor.getColumnIndexOrThrow(IMAGE))
+                    var post = Post(id, titre, city, email,description,author,image )
+                    posts.add(post)
+                }while (cursor.moveToNext())
+            }
+        }
+
+        db.close()
+
+        return posts
+    }
+
 
     fun findPosts(): ArrayList<Post>{
         val posts = ArrayList<Post>()
@@ -138,7 +165,6 @@ class AppDatabase(mContext: Context):SQLiteOpenHelper(
 
         private val DB_NAME = "plantora_db"
         private val DB_VERSION = 2
-        //private var INSTANCE: AppDatabase? = null
 
         private val POSTS_TABLE_NAME = "post"
         private val POSTS_ID = "id"
@@ -156,113 +182,3 @@ class AppDatabase(mContext: Context):SQLiteOpenHelper(
         private val MAIL = "mail"
     }
 }
-
-//class AppDatabase:(
-//    mContext : Context,
-//    name: String = "plantora_db",
-//    version: Int = 1
-//) : SQLiteOpenHelper(
-//    mContext,
-//    name,
-//    null,
-//    version
-//
-////)
-//    companion object{
-//
-//        @Volatile
-//        private var INSTANCE: AppDatabase? = null
-//
-//        private val POSTS_TABLE_NAME = "posts"
-//        private val POSTS_ID = "id"
-//        private val TITLE = "name"
-//        private val DESCRIPTION = "description"
-//        private val EMAIL = "email"
-//        private val IMAGE = "image"
-//        private val CITY = "city"
-//        private val DATE = "date"
-//        private val AUTHOR = "author"
-//
-//
-//        fun getDatabase(context: Context): AppDatabase{
-//            val tempInstance = INSTANCE
-//            if(tempInstance != null){
-//                return tempInstance
-//            }
-//
-//            synchronized(this){
-//                val instance = Room.databaseBuilder(
-//                    context.applicationContext,
-//                    AppDatabase::class.java,
-//                    "app_database"
-//                ).build()
-//                INSTANCE = instance
-//                return instance
-//            }
-//        }
-//
-//        fun onCreate(db: SQLiteDatabase?){
-////            val createTableUser = """
-////                CREATE TABLE user (
-////                $USER_ID
-////            """.trimIndent()
-//        }
-//        val createTablePosts = """
-//            CREATE TABLE $POSTS_TABLE_NAME (
-//            $POSTS_ID integer PRIMARY KEY,
-//            $TITLE varchar(50),
-//            $DESCRIPTION text,
-//            $CITY varchar(50),
-//            $EMAIL varchar(50),
-//            $AUTHOR Long,
-//            $DATE date,
-//            $IMAGE blob
-//
-//            )
-//            """.trimIndent()
-//        db?.execSQL(createTablePosts)
-//
-//    }
-//}
-
-//@Database(entities = [User::class, Post::class], version = 1)
-//abstract class AppDatabase : RoomDatabase() {
-//
-//    abstract fun userDao(): UserDao;
-//    abstract fun postDao(): PostDao;
-//
-//    companion object{
-//
-//        @Volatile
-//        private var INSTANCE: AppDatabase? = null
-//
-//        private val POSTS_TABLE_NAME = "posts"
-//        private val POSTS_ID = "id"
-//        private val TITLE = "name"
-//        private val DESCRIPTION = "description"
-//        private val EMAIL = "email"
-//        private val IMAGE = "image"
-//        private val CITY = "city"
-//        private val DATE = "date"
-//        private val AUTHOR = "author"
-//
-//
-//        fun getDatabase(context: Context): AppDatabase{
-//            val tempInstance = INSTANCE
-//            if(tempInstance != null){
-//                return tempInstance
-//            }
-//
-//            synchronized(this){
-//                val instance = Room.databaseBuilder(
-//                    context.applicationContext,
-//                    AppDatabase::class.java,
-//                    "app_database"
-//                ).build()
-//                INSTANCE = instance
-//                return instance
-//            }
-//        }
-
-
-

@@ -44,16 +44,10 @@ class AddPostActivity : AppCompatActivity() {
                 imagePost.setImageBitmap(bitmap)
             }
 
-//        val listPosts = findViewById<ListView>(R.id.)
-//        val adapter = PostAdaptor(this, R.layout.recycler_item_accueil,postsArray)
-//        listPosts.adapter = adapter
 
         imagePost.setOnClickListener {
 
             galleryLauncher.launch("image/*")
-//            val intentImg = Intent(Intent.ACTION_GET_CONTENT)
-//            intentImg.type = "image/*"
-//            startActivityForResult(intentImg, 100)
         }
 
         btnValidate.setOnClickListener {
@@ -82,9 +76,6 @@ class AddPostActivity : AppCompatActivity() {
             }
         }
 
-//        btnValidate.setOnClickListener{
-//
-//        }
     }
 
     fun getBytes(bitmap: Bitmap?): ByteArray {
@@ -106,16 +97,3 @@ class AddPostActivity : AppCompatActivity() {
     return compressImage
     }
 }
-
-//    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-//        super.onActivityResult(requestCode, resultCode, data)
-//        if(requestCode == 100 && resultCode == RESULT_OK){
-//          val uri: Uri? = data?.data
-//            val inputStream = contentResolver.openInputStream(uri!!)
-//            val bitmap = BitmapFactory.decodeStream(inputStream)
-//            imagePost.setImageBitmap(bitmap)
-//        }
-//
-//
-//    }
-//}

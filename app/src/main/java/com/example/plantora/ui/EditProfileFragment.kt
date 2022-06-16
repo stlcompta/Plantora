@@ -69,10 +69,6 @@ class EditProfileFragment : Fragment() {
         return root
     }
 
-//    override fun onViewCreated(view: View?, savedInstanceState: Bundle?) {
-//        super.onViewCreated(view, savedInstanceState)
-//        getSupportActionBar().setTitle("Hello world App");
-//    }
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         // Handle presses on the action bar menu items
         when (item.itemId) {

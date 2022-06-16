@@ -6,8 +6,8 @@ import androidx.lifecycle.ViewModel
 
 class EditProfileViewModel : ViewModel() {
 
-    private val _text = MutableLiveData<String>().apply {
-        value = "Fragment editprofile"
-    }
-    val text: LiveData<String> = _text
+//    private val _text = MutableLiveData<String>().apply {
+//        value = "Fragment editprofile"
+//    }
+//    val text: LiveData<String> = _text
 }
